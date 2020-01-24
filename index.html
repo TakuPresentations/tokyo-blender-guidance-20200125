@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta property="og:title" content="UnityとWiiFit(Wii Balance Board)をつないで遊んでみた">
+		<meta property="og:type" content="article">
+		<meta property="og:site_name" content="UnityとWiiFit(Wii Balance Board)をつないで遊んでみた">
+		<meta property="og:url" content="https://takupresentations.github.io/gotanda-unity-20200108/">
+		<meta property="og:image" content="https://takupresentations.github.io/gotanda-unity-20200108/images/wiifitpresentation.png">
+		<meta property="og:image:width" content="3360">
+		<meta property="og:image:height" content="1569">
+		<meta property="og:description" content="UnityとWiiFit(Wii Balance Board)をつないで遊んでみた">
+		<title>UnityとWiiFit(Wii Balance Board)をつないで遊んでみた</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102679583-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-102679583-2');
+    </script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>UnityとWii Balance Boardをつないで遊んでみた</h1>
+				</section>
+				<section>
+					<h2>自己紹介</h2>
+					<table>
+						<tr>
+							<td>
+								<img src="./images/takukobayashi.jpg" width="256" height="256" alt="TakuKobayashi">
+							</td>
+							<td>
+								<ul>
+									<li>小林拓 (<a href="https://twitter.com/taptappun">@taptappun</a>)</li>
+									<li>フルスタックエンジニア</li>
+									<li>ハッカソンジャンキー</li>
+									<li>元ゲームエンジニア</li>
+									<li>現在の所属: <a href="https://www.wantedly.com/companies/bitbank">ビットバンク</a></li>
+									<li>Unity歴: 4年3ヶ月</li>
+									<li>副業募集/彼女募集</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h2>質問1</h2>
+					<img src="https://images-na.ssl-images-amazon.com/images/I/71pKQpQogYL._SX466_.jpg" width="466" height="304">
+					<p>WiiFitを知っている人!!</p>
+				</section>
+				<section>
+					<h2>質問2</h2>
+					<img src="https://images-na.ssl-images-amazon.com/images/I/71pKQpQogYL._SX466_.jpg" width="466" height="304">
+					<p>WiiFitを持っている人!!</p>
+				</section>
+				<section>
+					<h2>質問3</h2>
+					<img src="https://images-na.ssl-images-amazon.com/images/I/71pKQpQogYL._SX466_.jpg" width="466" height="304">
+					<p>WiiFitを持っていた人!!</p>
+				</section>
+				<section>
+					<img src="https://www.nintendo.co.jp/wii/rfnj/img/noflash.jpg" width="330" height="250">
+					<ul>
+						<li><a href="https://ja.wikipedia.org/wiki/Wii_Fit">WiiFit</a>とは2007年12月1日発売(13年前!!)のWii専用のフィットネスゲームソフト</li>
+						<li>同梱されている<a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9Wii%E3%83%9C%E3%83%BC%E3%83%89">「バランスWiiボード」</a>(ボードの正式名称)に乗って遊ぶ</li>
+						<li>世界一売れた「体重計」でギネス世界記録に認定</li>
+					</ul>
+				</section>
+				<section>
+					<img src="https://images-na.ssl-images-amazon.com/images/I/71pKQpQogYL._SX466_.jpg" width="466" height="304">
+					<p>体重だけじゃなく重心やその他諸々の情報も取れちゃって、体重をサーバーに記録したりすることもできちゃう時代を先取りしすぎた超高性能体重計</p>
+					<p style="color: #FF0000">※ Wiiを「レトロゲーム」と言うとおじさんたちが泣きますので絶対に言わないように!!</p>
+				</section>
+				<section>
+					<h2>競合比較</h2>
+					<table>
+						<tr>
+							<td>
+								<a href="https://www.suruga-ya.jp/product/detail/102100687"><img src="./images/BalanceBoardPrice.png" width="408" height="210"></a>
+							</td>
+							<td>
+								<img src="./images/withings.png" width="408" height="207">
+							</td>
+							<td>
+								<img src="./images/xiaomi.png" width="408" height="209">
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h2>ちなみに</h2>
+					<img src="https://i.ytimg.com/vi/pmUS1nXq9RI/maxresdefault.jpg" width="640">
+					<p>現代のNintendoのフィットネスソフトといえば</p>
+					<p>リングフィット アドベンチャー</p>
+				</section>
+				<section>
+					<h2>ところで</h2>
+					<ul>
+						<li>バランスWiiボードってPC(Mac/Windows)に繋げることができるって知ってました?</li>
+						<li>Unityで開発できるって知ってました?</li>
+					</ul>
+					<p>→開発しました!!</p>
+				</section>
+				<section>
+					<h2>なんか作ってみた様子</h2>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/dg_66SUJQoc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+				</section>
+				<section>
+					<h2>ここで展示しています!!</h2>
+					<a href="http://leonardo500.jp/">ダ・ヴィンチ没後500年 「夢の実現」展</a>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6484.30988701766!2d139.700513!3d35.648554!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x473ae841375d2003!2z5Luj5a6Y5bGx44OS44Or44K144Kk44OJ44OG44Op44K5Ruajnw!5e0!3m2!1sja!2sjp!4v1578469780713!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+				</section>
+				<section>
+					<h2>どうなっているのか?</h2>
+					<img src="./images/bluetooth-flow.png">
+					<ul>
+						<li>バランスWiiボードの情報はBluetoothでつながる</li>
+						<li>Bluetoothより送られてくる情報をリバースエンジニアリングすることで情報を取得</li>
+					</ul>
+				</section>
+				<section>
+					<h2>リバースエンジニアリング?</h2>
+					<table>
+						<tr>
+							<td>
+								<img src="https://shop.r10s.jp/iimoreuse/cabinet/rakuten3/12146_2.jpg" width="200" height="200">
+							</td>
+							<td>
+								<img src="https://images-na.ssl-images-amazon.com/images/I/71pKQpQogYL._SX466_.jpg" width="233">
+							</td>
+							<td>
+								<img src="https://dist.joshinweb.jp/emall/img/sm/JSN_C00001/middle/49/02370/4902370536034.jpg?impolicy=tp300" width="200" height="200">
+							</td>
+						</tr>
+					</table>
+					<p>全てリバースエンジニアリング済み。Unityでも開発できます。</p>
+					<p>任天堂は<s>格安で高性能ガジェットを販売してくれる</s>素晴らしい企業です</p>
+				</section>
+				<section>
+					<h2>開発に使用したもの</h2>
+					<p><img src="./images/WiiBuddy.png"></p>
+					<p><a href="https://assetstore.unity.com/packages/tools/input-management/wiibuddy-4929">WiiBuddy</a></p>
+					<p>楽をしました...</p>
+				</section>
+				<section>
+					<h2>僕は見ていない</h2>
+					<p><a href="https://github.com/search?l=C%23&q=WiiBuddy&type=Code"><img src="./images/WiiBuddySearch.png"></a></p>
+				</section>
+				<section>
+					<h2>WiiBuddyの仕様</h2>
+					<ul>
+						<li>Unity 2019.1以下じゃないとUnityがクラッシュする</li>
+						<li>Mac PCのみ対応(Windows PCには別にライブラリがある)</li>
+					</ul>
+				</section>
+				<section>
+					<h2>WiiBuddyを使ってバランスWiiボードとのつなぎかた</h2>
+					<table>
+						<tr>
+							<td>
+								<img src="./images/image4.jpg" width="400">
+							</td>
+					    <td>
+								<img src="./images/image1.png" width="400">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								赤い●ボタンを押す
+							</td>
+					    <td>
+								「Find」ボタンを押す
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h2>よくある質問</h2>
+					<ul>
+						<li>エディタじゃなくてビルドしたもので使いたい → 多分使える(試していない)</li>
+						<li>WiiFitからPINコードの入力を要求されたんだけど? → 無視してOK(PINコードを入力しないので)</li>
+						<li>Android/iOSで使えないの? → ネイティブ処理においてかなりテクリが必要そうだけどいけそうな気はする...</li>
+					</ul>
+				</section>
+				<section>
+					<h1>デモ</h1>
+				</section>
+				<section>
+					<h2>その他、聞いてみたいことありましたらお気軽にどうぞ!!</h2>
+					<ul>
+						<li>Twitter: <a href="https://twitter.com/taptappun">@taptappun</a></li>
+						<li>Facebook: <a href="https://www.facebook.com/taku.kobayashi.560">小林拓</a></li>
+						<li>LINE: taptappun</li>
+						<li>他</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				keyboard: true,
+				defaultTiming: 800,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
+
